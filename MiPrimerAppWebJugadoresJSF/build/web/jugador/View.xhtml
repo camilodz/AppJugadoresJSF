@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h1>Datos del Jugador</h1>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Identificador:"/>
+                    <h:outputText value="#{jugadorController.selected.idJug}" title="#{bundle.ViewJugadorTitle_idJug}"/>
+                    <h:outputText value="Nombres:"/>
+                    <h:outputText value="#{jugadorController.selected.nombreJug}" title="#{bundle.ViewJugadorTitle_nombreJug}"/>
+                    <h:outputText value="Apellidos:"/>
+                    <h:outputText value="#{jugadorController.selected.apellidoJug}" title="#{bundle.ViewJugadorTitle_apellidoJug}"/>
+                    <h:outputText value="Fecha Nacimiento"/>
+                    <h:outputText value="#{jugadorController.selected.fechaNacJug}" title="#{bundle.ViewJugadorTitle_fechaNacJug}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Dirección email:"/>
+                    <h:outputText value="#{jugadorController.selected.email}" title="#{bundle.ViewJugadorTitle_email}"/>
+                    <h:outputText value="Deporte que Practica:"/>
+                    <h:outputText value="#{jugadorController.selected.idDeporte}" title="#{bundle.ViewJugadorTitle_idDeporte}"/>
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="4">
+                    <p:column>
+                        <p:commandButton action="#{jugadorController.destroyAndView}" value="Eliminar" update="@form">
+                            <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                            <!--Factorizar el siguiente código.-->
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </p:column>
+                <p:button outcome="Edit" value="Editar"/>
+                <p:commandButton action="#{jugadorController.prepareCreate}" value="Nuevo Jugador" />
+                <p:commandButton action="#{jugadorController.prepareList}" value="Listar Jugadores"/>
+                </h:panelGrid>
+                <!--<h:link outcome="/index" value="Inicio"/>-->
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

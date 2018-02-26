@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Datos del Nuevo Jugador"></h:outputText>
+        </ui:define>
+        <ui:define name="body">            
+            <h:form id="form">
+                <h:panelGrid columns="3">
+                    <p:outputLabel value="Identificador" for="idJug" />
+                    <p:inputText id="idJug" value="#{jugadorController.selected.idJug}" title="#{bundle.CreateJugadorTitle_idJug}" required="true" />
+                    <p:message for="idJug" display="IdJug" id="msgValidarId"/>
+                    
+                    <p:outputLabel value="Nombres:" for="nombreJug" />
+                    <p:inputText id="nombreJug" value="#{jugadorController.selected.nombreJug}" title="#{bundle.CreateJugadorTitle_nombreJug}" required="true" />
+                    <p:message for="nombreJug" display="NombreJug" id="msgValidarNombre"/>
+                    
+                    <p:outputLabel value="Apellidos:" for="apellidoJug" />
+                    <p:inputText id="apellidoJug" value="#{jugadorController.selected.apellidoJug}" title="#{bundle.CreateJugadorTitle_apellidoJug}" required="true" />
+                    <p:message for="apellidoJug" display="apellidoJug" id="msgValidarApellido"/>
+                    
+                    <p:outputLabel value="Fecha Nacimiento:" for="fechaNacJug" />
+                    <p:inputText id="fechaNacJug" value="#{jugadorController.selected.fechaNacJug}" title="#{bundle.CreateJugadorTitle_fechaNacJug}" required="true" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </p:inputText>
+                    <p:message for="fechaNacJug" display="Fecha Nac" id="msgValidarFecha"/>
+                    
+                    <p:outputLabel value="Dirección email:" for="email" />
+                    <p:inputText id="email" value="#{jugadorController.selected.email}" title="#{bundle.CreateJugadorTitle_email}" required="true" />
+                    <p:message for="email" display="Email" id="msgValidarEmail"/>
+                    
+                    <p:outputLabel value="Deporte:" for="idDeporte" />
+                    <h:selectOneMenu id="idDeporte" value="#{jugadorController.selected.idDeporte}" title="#{bundle.CreateJugadorTitle_idDeporte}" required="true" >
+                        <f:selectItems value="#{deporteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <p:message for="idDeporte" display="Nombre Deporte" id="msgValidarDeporte"/>
+                    
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                    <p:commandButton id="btnGuardarJug" actionListener="#{jugadorController.create}" value="Guardar" ajax="false"/>                    
+                    <p:commandButton action="#{jugadorController.prepareList}" value="Listar Jugadores" immediate="true" />
+                    <p:button outcome="/index" value="Inicio"/>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

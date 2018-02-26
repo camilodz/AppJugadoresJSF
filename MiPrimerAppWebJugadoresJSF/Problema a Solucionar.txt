@@ -1,0 +1,12 @@
+
+El sistema utilizara las siguientes tablas:
+
+- Deporte: idDeporte, nombreDeporte.
+- Jugadores: idJugador(clave primaria), nombres, apellidos, fecha nacimiento, email, idDeporte(Foranea).
+
+La aplicacion debe cumplir con los siguientes requisitos:
+
+	1.El campo tipo del deporte debe aparecer en un combo desplegable donde se muestren los nombres de los deportes.
+	2.El listado de jugadores debe mostrarse con paginacion de 5 registros.
+	3.La aplicacion debe permitir hacer busquedas por email, nombres y apellidos.
+	4.La aplicacion debe tener una interfaz de usuario agradable.
