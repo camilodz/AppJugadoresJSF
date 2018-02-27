@@ -60,7 +60,7 @@ public class PruebaJugadoresIT {
         btn_Guardar = manejador.findElement(By.id("form:btnGuardarJug"));
         
         //Asiganar Valores
-        txt_Identificador.sendKeys("12");
+        txt_Identificador.sendKeys("");
         txt_Nombres.sendKeys("Nuevo");
         txt_Apellidos.sendKeys("NuevoApe");
         txt_FechaNac.sendKeys("11/12/1994");
